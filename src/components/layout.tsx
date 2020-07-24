@@ -4,6 +4,7 @@ import React from 'react';
 
 import { ColumnContainer, GlobalStyle } from '../styled/global';
 import Footer from './footer';
+import Social from './social';
 import Navbar from './navbar';
 
 const Layout = ({ children }): JSX.Element => {
@@ -26,6 +27,7 @@ const Layout = ({ children }): JSX.Element => {
 
       <ColumnContainer
         style={{ justifyContent: `center`, alignItems: `center` }}>
+        <Social />
         <Footer></Footer>
       </ColumnContainer>
     </>

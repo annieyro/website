@@ -13,20 +13,19 @@ const IndexPage = (): JSX.Element => (
       <RowContainer
         style={{
           width: `90%`,
-          justifyContent: `space-around`,
+          justifyContent: `space-between`,
           alignItems: `center`,
           flexWrap: `wrap`,
         }}>
         <Intro>
           <p>
             hello! i'm <b>annie</b>.<br></br>i write code for a living •
+            <br></br>
             currently @ twitter
           </p>
           <p>
             but mostly i made this website for myself{' '}
-            <span style={{ fontFamily: `Arial` }}>
-              (´ ▽ `) <br></br>ヽ(・∀・)ﾉ
-            </span>
+            <span style={{ fontFamily: `Arial` }}>(´ ▽ `)</span>
           </p>
         </Intro>
         <div style={{ width: `30%`, maxWidth: `300px` }}>

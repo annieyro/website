@@ -1,4 +1,5 @@
 import React from 'react';
+import Colors from '../constants/Colors';
 
 const Footer: React.FC = (): JSX.Element => (
   <footer
@@ -8,6 +9,7 @@ const Footer: React.FC = (): JSX.Element => (
       textDecoration: `italic`,
       fontSize: 18,
       letterSpacing: `0.03em`,
+      color: Colors.darkerGray,
     }}>
     © {new Date().getFullYear()} annieyro
   </footer>

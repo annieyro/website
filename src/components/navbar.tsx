@@ -9,7 +9,7 @@ import {
   RowContainer,
 } from '../styled/global';
 
-const Navbar = ({ siteTitle }: { siteTitle: string }) => (
+const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
   <NavbarContainer>
     <NavbarCenterContainer>
       <RowContainer
@@ -31,6 +31,7 @@ const Navbar = ({ siteTitle }: { siteTitle: string }) => (
       </RowContainer>
       <RowContainer
         style={{
+          minWidth: `320px`,
           width: `45%`,
           alignItems: `center`,
           justifyContent: `space-around`,

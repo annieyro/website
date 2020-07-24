@@ -5,11 +5,13 @@ export const IntroContainer = styled.div`
   margin: 0 auto;
   width: 70%;
   max-width: 800px;
-  height: 80vh;
+  height: 75vh;
 `;
 
 export const Intro = styled.div`
-  margin: 3em 0 3em 2em;
-  width: 60%;
+  margin: 6em 0 2em 3em;
+  width: 40%;
   max-width: 480px;
+  font-size: 20px;
+  font-weight: 300;
 `;
