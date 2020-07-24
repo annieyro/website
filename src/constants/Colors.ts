@@ -6,7 +6,9 @@ const Colors = {
   activeText: '#373737',
   darkText: '#111111',
   // Gray
+  lightestGray: '#E0E0E0',
   lighterGray: '#C4C4C4',
+  darkerGray: '#828282',
   // Red
   lightestRed: '#F8E7E9',
   lighterRed: '#FFE3E7',

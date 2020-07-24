@@ -14,7 +14,7 @@ const Navbar = ({ siteTitle }: { siteTitle: string }) => (
     <NavbarCenterContainer>
       <RowContainer
         style={{
-          width: `200px`,
+          width: `188px`,
           alignItems: `center`,
           justifyContent: `space-between`,
         }}>

@@ -14,7 +14,7 @@ import React from 'react';
  */
 
 //TODO make this component take in a query($path: String) or fragment
-const Image = () => {
+const Image = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
       profile: file(relativePath: { eq: "profile.jpg" }) {

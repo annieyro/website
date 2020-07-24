@@ -1,9 +1,13 @@
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import Colors from '../constants/Colors';
 import { createGlobalStyle } from 'styled-components';
 
+import Colors from '../constants/Colors';
+
 export const GlobalStyle = createGlobalStyle`
+  html {
+   background: ${Colors.lightestRed} 
+  }
   body {
     padding: 0;
     margin: 0;
@@ -28,11 +32,12 @@ export const ColumnContainer = styled.div`
 `;
 
 export const NavbarContainer = styled(RowContainer)`
-  background: ${Colors.lighterRed};
+  background: ${Colors.darkerGray};
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 1.5em 0;
+  padding: 1em 0;
+  max-height: 20vh;
 `;
 
 export const NavbarCenterContainer = styled(RowContainer)`
@@ -49,18 +54,18 @@ export const SidebarContainer = styled(ColumnContainer)`
 
 export const HomeLink = styled(Link)`
   font-family: Arapey;
-  font-size: 36px;
-  letter-spacing: 0.04em;
+  font-size: 32px;
+  letter-spacing: 0.03em;
   text-transform: lowercase;
   text-decoration: none;
-  color: ${Colors.darkText};
+  color: ${Colors.lightText};
 `;
 
 export const NavLink = styled(Link)`
   font-family: Karla;
-  font-size: 20px;
-  letter-spacing: 0.05em;
+  font-size: 18px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${Colors.darkText};
+  color: ${Colors.lightText};
 `;
