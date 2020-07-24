@@ -1,9 +1,7 @@
 import styled from 'styled-components';
+import { PageCenterContainer } from './global';
 
-// width + max-width matches the navbar percentage. TODO make these constants!
-export const IntroContainer = styled.div`
-  margin: 0 auto;
-  width: 70%;
+export const IntroContainer = styled(PageCenterContainer)`
   max-width: 800px;
   height: 75vh;
 `;

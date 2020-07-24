@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Image from '../components/image';
-import Layout from '../components/layout';
+import NavbarLayout from '../components/navbarlayout';
 import SEO from '../components/seo';
 import { RowContainer } from '../styled/global';
 import { Intro, IntroContainer } from '../styled/index';
 
 const IndexPage = (): JSX.Element => (
-  <Layout>
+  <NavbarLayout>
     <SEO title="home" />
     <IntroContainer>
       <RowContainer
@@ -33,7 +33,7 @@ const IndexPage = (): JSX.Element => (
         </div>
       </RowContainer>
     </IntroContainer>
-  </Layout>
+  </NavbarLayout>
 );
 
 export default IndexPage;

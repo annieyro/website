@@ -3,17 +3,17 @@ import React from 'react';
 import Colors from '../constants/Colors';
 import {
   HomeLink,
-  NavbarCenterContainer,
-  NavbarContainer,
+  SidebarLeftContainer,
+  SidebarContainer,
+  SidebarLinksContainer,
   NavLink,
-  RowContainer,
   LogoContainer,
 } from '../styled/global';
 
-const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
-  <NavbarContainer>
-    <NavbarCenterContainer>
-      <LogoContainer>
+const Sidebar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
+  <SidebarContainer>
+    <SidebarLeftContainer>
+      <LogoContainer style={{ paddingTop: `2vh` }}>
         <span
           style={{
             background: `${Colors.lighterGray}`,
@@ -25,27 +25,21 @@ const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
           {siteTitle}
         </HomeLink>
       </LogoContainer>
-      <RowContainer
-        style={{
-          minWidth: `320px`,
-          width: `45%`,
-          alignItems: `center`,
-          justifyContent: `space-around`,
-        }}>
+      <SidebarLinksContainer>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/amigurumi/">Amigurumi</NavLink>
         <NavLink to="/">Travel Log</NavLink>
-      </RowContainer>
-    </NavbarCenterContainer>
-  </NavbarContainer>
+      </SidebarLinksContainer>
+    </SidebarLeftContainer>
+  </SidebarContainer>
 );
 
-Navbar.propTypes = {
+Sidebar.propTypes = {
   siteTitle: PropTypes.string,
 };
 
-Navbar.defaultProps = {
+Sidebar.defaultProps = {
   siteTitle: ``,
 };
 
-export default Navbar;
+export default Sidebar;

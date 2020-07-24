@@ -8,7 +8,7 @@ const Colors = {
   // Gray
   lightestGray: '#E0E0E0',
   lighterGray: '#C4C4C4',
-  darkerGray: '#828282',
+  darkerGray: '#5E5E5E',
   // Red
   lightestRed: '#F8E7E9',
   lighterRed: '#FFE3E7',

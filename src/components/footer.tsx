@@ -1,18 +1,8 @@
 import React from 'react';
-import Colors from '../constants/Colors';
+import { FooterContainer } from '../styled/global';
 
 const Footer: React.FC = (): JSX.Element => (
-  <footer
-    style={{
-      fontFamily: `Arapey`,
-      fontWeight: 400,
-      textDecoration: `italic`,
-      fontSize: 18,
-      letterSpacing: `0.03em`,
-      color: Colors.darkerGray,
-    }}>
-    © {new Date().getFullYear()} annieyro
-  </footer>
+  <FooterContainer>© {new Date().getFullYear()} annieyro</FooterContainer>
 );
 
 export default Footer;

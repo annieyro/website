@@ -11,7 +11,7 @@ import {
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Colors from '../constants/Colors';
 
-import { RowContainer } from '../styled/global';
+import { SocialContainer } from '../styled/global';
 
 const ClickableIcon = ({
   icon,
@@ -29,14 +29,7 @@ const ClickableIcon = ({
 );
 
 const Social = (): JSX.Element => (
-  <RowContainer
-    style={{
-      minWidth: `256px`,
-      width: `17%`,
-      alignItems: `center`,
-      justifyContent: `space-around`,
-      padding: `1.65em 0`,
-    }}>
+  <SocialContainer>
     <ClickableIcon icon={faTwitter} href="https://twitter.com/annieyro" />
     <ClickableIcon icon={faInstagram} href="http://instagram.com/annieyro/" />
     <ClickableIcon icon={faMediumM} href="https://medium.com/@annieyro" />
@@ -46,7 +39,7 @@ const Social = (): JSX.Element => (
     />
     <ClickableIcon icon={faGithub} href="https://github.com/annieyro" />
     <ClickableIcon icon={faEnvelope} href="mailto:anniero@berkeley.edu" />
-  </RowContainer>
+  </SocialContainer>
 );
 
 export default Social;
