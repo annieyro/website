@@ -37,7 +37,7 @@ export const HomeLink = styled(Link)`
   letter-spacing: 0.03em;
   text-transform: lowercase;
   text-decoration: none;
-  color: ${Colors.lightText};
+  color: ${Colors.darkerGray};
 `;
 
 export const NavLink = styled(Link)`
@@ -46,27 +46,29 @@ export const NavLink = styled(Link)`
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${Colors.lightText};
+  color: ${Colors.darkerGray};
 `;
 
 export const LogoContainer = styled(RowContainer)`
   width: 188px;
+  min-width: 188px;
   align-items: center;
   justify-content: space-between;
 `;
 
 // Navbar
 
+// TODO add media queries for small screens
 export const NavbarContainer = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
-  box-shadow: 0px 1px 2px 1px ${Colors.darkerGray};
-  background: ${Colors.darkerGray};
+  box-shadow: 0px 1px 2px 1px ${Colors.lightestRed};
+  background: ${Colors.lightestRed};
   width: 100%;
-  padding: 1em 0;
+  padding-top: 20px;
   max-height: 20vh;
 `;
 
@@ -85,30 +87,31 @@ export const SidebarContainer = styled.header`
   justify-content: center;
   align-items: flex-start;
 
-  box-shadow: 0px 1px 2px 1px ${Colors.darkerGray};
-  background: ${Colors.darkerGray};
+  box-shadow: 0px 1px 2px 1px ${Colors.lightestRed};
+  background: ${Colors.lightestRed};
 
   height: 100vh;
   width: 18vw;
   min-width: 240px;
-  padding: 1em 0;
+  padding: 0;
 `;
 
 export const SidebarLeftContainer = styled(ColumnContainer)`
   align-items: flex-start;
-  width: 80%;
-  padding: 0 1vw;
+  justify-content: space-between;
+  width: 100%;
+  height: 60%;
+  max-height: 380px;
 `;
 
 export const SidebarLinksContainer = styled(ColumnContainer)`
   align-items: flex-start;
   justify-content: space-around;
+  min-height: 128px;
   width: 100%;
-  height: 20vh;
-
+  padding-top: 8px;
+  padding-left: 36px;
   font-weight: normal;
-  padding-top: 25vh;
-  padding-left: 10%;
 `;
 
 // Footer
