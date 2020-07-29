@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: Athiti;
+    color: ${Colors.darkerGray}
   }
   b, h1 {
       font-weight: 600;
@@ -120,15 +121,23 @@ export const SocialContainer = styled(RowContainer)`
   width: 17%;
   align-items: center;
   justify-content: space-around;
-  padding: 1.65em 0;
 `;
 
-export const FooterContainer = styled.footer`
+export const CopyrightContainer = styled.div`
   font-family: Arapey;
   font-weight: 400;
   text-decoration: italic;
   font-size: 18;
   letter-spacing: 0.03em;
+`;
+
+export const FooterContainer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  max-height: 15vh;
   color: ${Colors.darkerGray};
 `;
 

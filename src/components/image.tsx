@@ -27,7 +27,7 @@ const Image = (): JSX.Element => {
     }
   `);
 
-  return <Img fluid={data.profile.childImageSharp.fluid} />;
+  return <Img alt="annie in sf!" fluid={data.profile.childImageSharp.fluid} />;
 };
 
 export default Image;

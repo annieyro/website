@@ -13,12 +13,13 @@ import React from 'react';
 import Colors from '../constants/Colors';
 import {
   ColumnContainer,
+  CopyrightContainer,
   FooterContainer,
   SocialContainer,
 } from '../styled/global';
 
 const Copyright: React.FC = (): JSX.Element => (
-  <FooterContainer>© {new Date().getFullYear()} annieyro</FooterContainer>
+  <CopyrightContainer>© {new Date().getFullYear()} annieyro</CopyrightContainer>
 );
 
 const ClickableIcon = ({
@@ -51,11 +52,10 @@ const Social = (): JSX.Element => (
 );
 
 const Footer = ({ style }: { style: React.CSSProperties }): JSX.Element => (
-  <ColumnContainer
-    style={{ ...style, justifyContent: `center`, alignItems: `center` }}>
+  <FooterContainer style={{ ...style }}>
     <Social />
     <Copyright />
-  </ColumnContainer>
+  </FooterContainer>
 );
 
 Footer.defaultProps = {

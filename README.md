@@ -20,3 +20,4 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 - [linter/hooks config](https://dev.to/talohana/setup-your-typescript-project-with-eslint-prettier-and-lint-staged-25dg)
 - [what is typescript and linting lol](https://stackoverflow.com/questions/56041623/missing-return-type-on-function-in-react-typescript-code)
+- [opinionated typescript with graphql](https://github.com/cometkim/gatsby-plugin-typegen)

@@ -1,7 +1,53 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
-// You can delete this file if you're not using it
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === `Mdx`) {
+    const slug = createFilePath({ node, getNode, basePath: `src/pages` });
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    });
+  }
+};
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+  const result = await graphql(`
+    query {
+      allMdx {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    throw result.errors;
+  }
+
+  const amigurumiTemplate = path.resolve(`./src/templates/amigurumi-post.tsx`);
+  result.data.allMdx.edges.forEach(({ node }) => {
+    console.log(node);
+    createPage({
+      path: node.fields.slug,
+      component: amigurumiTemplate,
+      context: {
+        // Data passed to context is available
+        // in page (ex: amigurumiTemplate) queries as GraphQL variables.
+        slug: node.fields.slug,
+      },
+    });
+  });
+  console.log(JSON.stringify(result, null, 4));
+};
