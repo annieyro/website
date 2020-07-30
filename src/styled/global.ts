@@ -19,7 +19,26 @@ export const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
+    color: ${Colors.darkerGray}
   }
+  main {
+    display: inline;
+  }
+`;
+
+// Text
+export const TitleSerif = styled.div`
+  font-family: Lora;
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: 0.03em;
+  color: ${Colors.activeText};
+`;
+
+export const CaptionSansSerif = styled.em`
+  font-weight: 400;
+  font-size: 18px;
+  color: ${Colors.activeText};
 `;
 
 export const RowContainer = styled.div`
@@ -80,41 +99,6 @@ export const NavbarCenterContainer = styled(RowContainer)`
   align-items: center;
 `;
 
-// Sidebar-specific
-
-export const SidebarContainer = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-
-  box-shadow: 0px 1px 2px 1px ${Colors.lightestRed};
-  background: ${Colors.lightestRed};
-
-  height: 100vh;
-  width: 18vw;
-  min-width: 240px;
-  padding: 0;
-`;
-
-export const SidebarLeftContainer = styled(ColumnContainer)`
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  height: 60%;
-  max-height: 380px;
-`;
-
-export const SidebarLinksContainer = styled(ColumnContainer)`
-  align-items: flex-start;
-  justify-content: space-around;
-  min-height: 128px;
-  width: 100%;
-  padding-top: 8px;
-  padding-left: 36px;
-  font-weight: normal;
-`;
-
 // Footer
 export const SocialContainer = styled(RowContainer)`
   min-width: 256px;
@@ -137,7 +121,7 @@ export const FooterContainer = styled.footer`
   justify-content: space-between;
   align-items: center;
   height: 56px;
-  max-height: 15vh;
+  max-height: 12vh;
   color: ${Colors.darkerGray};
 `;
 

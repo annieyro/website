@@ -3,7 +3,7 @@ const Colors = {
   lightText: '#FFFFFF',
   lighterText: '#FEFDFD',
   secondaryText: '#747474',
-  activeText: '#373737',
+  activeText: '#5E5E5E',
   darkText: '#111111',
   // Gray
   lightestGray: '#E0E0E0',

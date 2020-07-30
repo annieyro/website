@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
+import styled from 'styled-components';
 import Colors from '../constants/Colors';
 import {
   ColumnContainer,
@@ -9,12 +9,44 @@ import {
   LogoContainer,
   NavLink,
   RowContainer,
-  SidebarContainer,
-  SidebarLeftContainer,
-  SidebarLinksContainer,
 } from '../styled/global';
 import Footer from './footer';
 import useTitle from './useTitle';
+
+// --------------- Sidebar
+
+const SidebarContainer = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  box-shadow: 0px 1px 2px 1px ${Colors.lightestRed};
+  background: ${Colors.lightestRed};
+
+  height: 100vh;
+  width: 18vw;
+  min-width: 240px;
+  padding: 0;
+`;
+
+const SidebarLeftContainer = styled(ColumnContainer)`
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: 60%;
+  max-height: 380px;
+`;
+
+const SidebarLinksContainer = styled(ColumnContainer)`
+  align-items: flex-start;
+  justify-content: space-around;
+  min-height: 128px;
+  width: 100%;
+  padding-top: 8px;
+  padding-left: 36px;
+  font-weight: normal;
+`;
 
 // TODO accept props for which link to bold / change color
 const Sidebar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
@@ -35,7 +67,7 @@ const Sidebar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
       <SidebarLinksContainer>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/amigurumi/">Amigurumi</NavLink>
-        <NavLink to="/">Photo Journal</NavLink>
+        <NavLink to="/travel-log">Photo Journal</NavLink>
       </SidebarLinksContainer>
     </SidebarLeftContainer>
   </SidebarContainer>
@@ -49,45 +81,51 @@ Sidebar.defaultProps = {
   siteTitle: ``,
 };
 
+// --------------- Layout
+
+const CenterColumnContainer = styled(ColumnContainer)`
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const ResponsiveRowContainer = styled(RowContainer)`
+  flex: 1 0 auto;
+  width: 70%;
+  max-width: 800px;
+  min-height: 400px;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+const MainContentColumnContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+`;
+
 const SidebarLayout = ({ children }): JSX.Element => {
   const title = useTitle();
 
   return (
     <>
       <GlobalStyle />
-      <RowContainer
-        style={{
-          justifyContent: `center`,
-          alignItems: `center`,
-          width: `100%`,
-        }}>
-        <ColumnContainer style={{ width: `70%`, maxWidth: `800px` }}>
-          <RowContainer
-            style={{
-              width: `100%`,
-              height: `80vh`,
-              minHeight: `400px`,
-              alignItems: `flex-start`,
-              justifyContent: `space-between`,
-            }}>
-            <Sidebar siteTitle={title}></Sidebar>
-            <ColumnContainer
-              style={{
-                justifyContent: `center`,
-                alignItems: `flex-start`,
-                width: `70vw`,
-              }}>
-              <main>{children}</main>
-            </ColumnContainer>
-          </RowContainer>
-        </ColumnContainer>
-      </RowContainer>
-      <Footer
-        style={{
-          paddingTop: `2vh`,
-          height: `10vh`,
-        }}
-      />
+      <CenterColumnContainer>
+        <ResponsiveRowContainer>
+          <Sidebar siteTitle={title}></Sidebar>
+          <MainContentColumnContainer>{children}</MainContentColumnContainer>
+        </ResponsiveRowContainer>
+        <Footer
+          style={{
+            flexShrink: 0,
+            height: `10vh`,
+            marginBottom: `2vh`,
+          }}
+        />
+      </CenterColumnContainer>
     </>
   );
 };
