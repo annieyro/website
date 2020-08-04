@@ -4,6 +4,9 @@ import { createGlobalStyle } from 'styled-components';
 
 import Colors from '../constants/Colors';
 
+// Styling constants
+export const viewingWidth = '80vw';
+
 export const GlobalStyle = createGlobalStyle`
   html {
    background: ${Colors.lightestRed} 
@@ -76,34 +79,10 @@ export const LogoContainer = styled(RowContainer)`
   justify-content: space-between;
 `;
 
-// Navbar
-
-// TODO add media queries for small screens
-export const NavbarContainer = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  box-shadow: 0px 1px 2px 1px ${Colors.lightestRed};
-  background: ${Colors.lightestRed};
-  width: 100%;
-  padding-top: 20px;
-  max-height: 20vh;
-`;
-
-export const NavbarCenterContainer = styled(RowContainer)`
-  width: 70%;
-  max-width: 800px;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 // Footer
 export const SocialContainer = styled(RowContainer)`
-  min-width: 256px;
-  width: 17%;
   align-items: center;
+  min-width: 256px;
   justify-content: space-around;
 `;
 
@@ -116,17 +95,47 @@ export const CopyrightContainer = styled.div`
 `;
 
 export const FooterContainer = styled.footer`
+  min-width: 256px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 56px;
-  max-height: 12vh;
+  max-height: 10vh;
   color: ${Colors.darkerGray};
 `;
 
-// width + max-width matches the navbar percentage. TODO make these constants!
 export const PageCenterContainer = styled.div`
   margin: 0 auto;
+  width: ${viewingWidth}%;
+`;
+
+// Shared between amigurumi & photo-journal
+
+//hacky way to get the flex-child to grow beyond its parent.
+//not really sure why it works tbh lmao
+export const WhiteBGCenteredContainer = styled(ColumnContainer)`
+  justify-content: flex-start;
+  align-items: center;
+  background: white;
+
+  width: 110%;
+  margin: 0 auto;
+  margin-left: 4%;
+  height: 100%;
+`;
+
+export const HeadingContainer = styled(ColumnContainer)`
+  padding-top: 20px;
   width: 70%;
+  height: 20vh;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+export const PostsContainer = styled(RowContainer)`
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
 `;

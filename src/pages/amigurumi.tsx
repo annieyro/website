@@ -1,25 +1,23 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { TitleSerif, CaptionSansSerif } from '../styled/global';
 import {
-  ColumnContainer,
-  TitleSerif,
-  CaptionSansSerif,
-  RowContainer,
+  WhiteBGCenteredContainer,
+  HeadingContainer,
+  PostsContainer,
 } from '../styled/global';
-import { WhiteBGCenteredContainer } from '../styled/amigurumi';
 import SidebarLayout from '../components/sidebarlayout';
 import SEO from '../components/seo';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Img from 'gatsby-image';
 
-// TODO install gatsby-plugin-typegen to help w/ graphQL types
-// until then ignore :sweat-smile:
+// TODO install gatsby-plugin-typegen to help w/ graphQL types until then ignore :sweat-smile:
 
 const AmigurumiPage = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx {
+      allMdx(filter: { fileAbsolutePath: { regex: "/pages/amigurumi/" } }) {
         totalCount
         edges {
           node {
@@ -38,7 +36,6 @@ const AmigurumiPage = (): JSX.Element => {
             fields {
               slug
             }
-            excerpt
           }
         }
       }
@@ -48,35 +45,12 @@ const AmigurumiPage = (): JSX.Element => {
   return (
     <SidebarLayout>
       <SEO title="amigurumi" />
-      <ColumnContainer
-        style={{
-          margin: `0 auto`,
-          background: `white`,
-          // hacky way to get the white to fill-right
-          marginLeft: `4%`,
-          marginBottom: `12%`,
-          width: `130%`,
-          justifyContent: `flex-start`,
-          alignItems: `center`,
-        }}>
-        <ColumnContainer
-          style={{
-            width: `70%`,
-            height: `18vh`,
-            marginBottom: `5%`,
-            justifyContent: `space-evenly`,
-            alignItems: `center`,
-          }}>
+      <WhiteBGCenteredContainer>
+        <HeadingContainer>
           <TitleSerif>amigurumi</TitleSerif>
           <CaptionSansSerif>crochet creatures</CaptionSansSerif>
-        </ColumnContainer>
-        <RowContainer
-          style={{
-            width: `80%`,
-            flexWrap: `wrap`,
-            justifyContent: `space-evenly`,
-            alignItems: `flex-start`,
-          }}>
+        </HeadingContainer>
+        <PostsContainer>
           {data.allMdx.edges.map(({ node }) => {
             const featuredImgFluid =
               node.frontmatter.featuredImage.childImageSharp.fluid;
@@ -96,11 +70,11 @@ const AmigurumiPage = (): JSX.Element => {
               </div>
             );
           })}
-        </RowContainer>
+        </PostsContainer>
         <CaptionSansSerif style={{ marginBottom: `16px` }}>
           {data.allMdx.totalCount} posts
         </CaptionSansSerif>
-      </ColumnContainer>
+      </WhiteBGCenteredContainer>
     </SidebarLayout>
   );
 };

@@ -6,13 +6,36 @@ import { GlobalStyle } from '../styled/global';
 import {
   HomeLink,
   LogoContainer,
-  NavbarCenterContainer,
-  NavbarContainer,
   NavLink,
   RowContainer,
+  viewingWidth,
 } from '../styled/global';
 import Footer from './footer';
 import useTitle from './useTitle';
+import styled from 'styled-components';
+
+// Navbar
+
+// TODO add media queries for small screens
+export const NavbarContainer = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0px 1px 2px 1px ${Colors.lightestRed};
+  background: ${Colors.lightestRed};
+  width: 100%;
+  padding-top: 20px;
+  max-height: 20vh;
+`;
+
+export const NavbarCenterContainer = styled(RowContainer)`
+  width: ${viewingWidth};
+  max-width: 800px;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
   <NavbarContainer>
@@ -38,7 +61,7 @@ const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
         }}>
         <NavLink to="/">home</NavLink>
         <NavLink to="/amigurumi/">amigurumi</NavLink>
-        <NavLink to="/travel-log">travel log</NavLink>
+        <NavLink to="/photo-journal">photo journal</NavLink>
       </RowContainer>
     </NavbarCenterContainer>
   </NavbarContainer>
