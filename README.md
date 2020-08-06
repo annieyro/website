@@ -22,3 +22,4 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 - [what is typescript and linting lol](https://stackoverflow.com/questions/56041623/missing-return-type-on-function-in-react-typescript-code)
 - [opinionated typescript with graphql](https://github.com/cometkim/gatsby-plugin-typegen)
 - [designate folders for mdx content](https://github.com/gatsbyjs/gatsby/issues/18536)
+- [center last item of flex-wrap](https://stackoverflow.com/questions/32802202/how-to-center-a-flex-container-but-left-align-flex-items)

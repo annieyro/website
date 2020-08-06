@@ -14,6 +14,7 @@ import Colors from '../constants/Colors';
 import {
   CopyrightContainer,
   FooterContainer,
+  SidebarSocialContainer,
   SocialContainer,
 } from '../styled/global';
 
@@ -38,59 +39,97 @@ const ClickableIcon = ({
   </a>
 );
 
-// TODO make an object for this, then map over to produce this list
+// TODO make an object for icons, then map over to produce this list. so messy but whatever lmao
 const Social = ({
-  style,
+  sidebar,
   fontSize,
 }: {
-  style?: React.CSSProperties;
+  sidebar?: boolean;
   fontSize?: string;
-}): JSX.Element => (
-  <SocialContainer style={{ ...style }}>
-    <ClickableIcon
-      fontSize={fontSize}
-      icon={faTwitter}
-      href="https://twitter.com/annieyro"
-    />
-    <ClickableIcon
-      fontSize={fontSize}
-      icon={faInstagram}
-      href="http://instagram.com/annieyro/"
-    />
-    <ClickableIcon
-      fontSize={fontSize}
-      icon={faMediumM}
-      href="https://medium.com/@annieyro"
-    />
-    <ClickableIcon
-      fontSize={fontSize}
-      icon={faLinkedinIn}
-      href="https://www.linkedin.com/in/anniero/"
-    />
-    <ClickableIcon
-      fontSize={fontSize}
-      icon={faGithub}
-      href="https://github.com/annieyro"
-    />
-    <ClickableIcon
-      fontSize={fontSize}
-      icon={faEnvelope}
-      href="mailto:anniero@berkeley.edu"
-    />
-  </SocialContainer>
-);
+}): JSX.Element => {
+  if (sidebar)
+    return (
+      <SidebarSocialContainer>
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faTwitter}
+          href="https://twitter.com/annieyro"
+        />
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faInstagram}
+          href="http://instagram.com/annieyro/"
+        />
+        {/* <ClickableIcon
+          fontSize={fontSize}
+          icon={faMediumM}
+          href="https://medium.com/@annieyro"
+        /> */}
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faLinkedinIn}
+          href="https://www.linkedin.com/in/anniero/"
+        />
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faGithub}
+          href="https://github.com/annieyro"
+        />
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faEnvelope}
+          href="mailto:anniero@berkeley.edu"
+        />
+      </SidebarSocialContainer>
+    );
+  else
+    return (
+      <SocialContainer>
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faTwitter}
+          href="https://twitter.com/annieyro"
+        />
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faInstagram}
+          href="http://instagram.com/annieyro/"
+        />
+        {/* <ClickableIcon
+          fontSize={fontSize}
+          icon={faMediumM}
+          href="https://medium.com/@annieyro"
+        /> */}
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faLinkedinIn}
+          href="https://www.linkedin.com/in/anniero/"
+        />
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faGithub}
+          href="https://github.com/annieyro"
+        />
+        <ClickableIcon
+          fontSize={fontSize}
+          icon={faEnvelope}
+          href="mailto:anniero@berkeley.edu"
+        />
+      </SocialContainer>
+    );
+};
 
 const Footer = ({
   style,
-  socialStyle,
+  sidebar,
   fontSize,
 }: {
   style?: React.CSSProperties;
-  socialStyle?: React.CSSProperties;
+  sidebar?: boolean;
   fontSize?: string;
 }): JSX.Element => (
   <FooterContainer style={{ ...style }}>
-    <Social style={socialStyle} fontSize={fontSize || ''} />
+    <Social sidebar={sidebar || false} fontSize={fontSize || ''} />
     <Copyright />
   </FooterContainer>
 );

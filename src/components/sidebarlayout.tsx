@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+
 import Colors from '../constants/Colors';
 import {
   ColumnContainer,
@@ -27,6 +28,10 @@ const SidebarContainer = styled(ColumnContainer)`
   width: 14vw;
   min-width: 220px;
   padding-right: 1vw;
+
+  @media (max-width: 630px) {
+    min-width: 164px;
+  }
 `;
 
 const SidebarLeftContainer = styled.header`
@@ -45,7 +50,7 @@ const SidebarLinksContainer = styled(ColumnContainer)`
   min-height: 128px;
   width: 100%;
   padding-top: 12vh;
-  padding-left: 36px;
+  padding-left: 3vw;
   font-weight: normal;
 `;
 
@@ -72,11 +77,11 @@ const Sidebar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
       </SidebarLinksContainer>
     </SidebarLeftContainer>
     <Footer
-      fontSize={'20px'}
+      fontSize={'22px'}
       style={{
         marginBottom: `2vh`,
       }}
-      socialStyle={{ minWidth: `236px` }}
+      sidebar={true}
     />
   </SidebarContainer>
 );
@@ -113,7 +118,11 @@ const MainContentColumnContainer = styled.main`
   justify-content: flex-start;
   align-items: center;
   width: 70vw;
-  height: 100vh;
+  min-height: 100vh;
+
+  @media (min-width: 400px) {
+    height: 100vh;
+  }
 `;
 
 const SidebarLayout = ({ children }): JSX.Element => {

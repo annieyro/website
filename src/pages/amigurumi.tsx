@@ -1,16 +1,17 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import { TitleSerif, CaptionSansSerif } from '../styled/global';
-import {
-  WhiteBGCenteredContainer,
-  HeadingContainer,
-  PostsContainer,
-} from '../styled/global';
-import SidebarLayout from '../components/sidebarlayout';
-import SEO from '../components/seo';
-import { useStaticQuery, graphql } from 'gatsby';
-
+import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import React from 'react';
+
+import SEO from '../components/seo';
+import SidebarLayout from '../components/sidebarlayout';
+import { CaptionSansSerif, TitleSerif } from '../styled/global';
+import {
+  HeadingContainer,
+  PostCard,
+  PostsContainer,
+  WhiteBGCenteredContainer,
+} from '../styled/global';
 
 // TODO install gatsby-plugin-typegen to help w/ graphQL types until then ignore :sweat-smile:
 
@@ -48,14 +49,18 @@ const AmigurumiPage = (): JSX.Element => {
       <WhiteBGCenteredContainer>
         <HeadingContainer>
           <TitleSerif>amigurumi</TitleSerif>
-          <CaptionSansSerif>crochet creatures</CaptionSansSerif>
+          <hr style={{ width: `75%` }}></hr>
+          <CaptionSansSerif style={{ textAlign: `center` }}>
+            crochet creatures
+          </CaptionSansSerif>
         </HeadingContainer>
+
         <PostsContainer>
           {data.allMdx.edges.map(({ node }) => {
             const featuredImgFluid =
               node.frontmatter.featuredImage.childImageSharp.fluid;
             return (
-              <div style={{ width: `24%`, padding: `2%` }} key={node.id}>
+              <PostCard key={node.id}>
                 <Link to={node.fields.slug} style={{ textDecoration: `none` }}>
                   <div></div>
                   <Img
@@ -67,11 +72,11 @@ const AmigurumiPage = (): JSX.Element => {
                     {node.frontmatter.title} • {node.frontmatter.date}
                   </p>
                 </Link>
-              </div>
+              </PostCard>
             );
           })}
         </PostsContainer>
-        <CaptionSansSerif style={{ marginBottom: `16px` }}>
+        <CaptionSansSerif style={{ textAlign: `center`, marginBottom: `20px` }}>
           {data.allMdx.totalCount} posts
         </CaptionSansSerif>
       </WhiteBGCenteredContainer>

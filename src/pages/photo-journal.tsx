@@ -1,16 +1,17 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import { TitleSerif, CaptionSansSerif } from '../styled/global';
-import {
-  WhiteBGCenteredContainer,
-  HeadingContainer,
-  PostsContainer,
-} from '../styled/global';
-import SidebarLayout from '../components/sidebarlayout';
-import SEO from '../components/seo';
-import { useStaticQuery, graphql } from 'gatsby';
-
+import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import React from 'react';
+
+import SEO from '../components/seo';
+import SidebarLayout from '../components/sidebarlayout';
+import { CaptionSansSerif, TitleSerif } from '../styled/global';
+import {
+  HeadingContainer,
+  PostCard,
+  PostsContainer,
+  WhiteBGCenteredContainer,
+} from '../styled/global';
 
 // TODO install gatsby-plugin-typegen to help w/ graphQL types until then ignore :sweat-smile:
 
@@ -36,7 +37,6 @@ const PhotoJournalPage = (): JSX.Element => {
             fields {
               slug
             }
-            excerpt
           }
         }
       }
@@ -49,33 +49,32 @@ const PhotoJournalPage = (): JSX.Element => {
       <WhiteBGCenteredContainer>
         <HeadingContainer>
           <TitleSerif>photo journal</TitleSerif>
+          <hr style={{ width: `78%` }}></hr>
           <CaptionSansSerif>
-            for some memories. shot on canon eos80d | 50mm f1.8 | kit 18-135mm,
-            iphone x
+            documenting some memories. <br></br> shot on canon eos80d | 50mm
+            f1.8 | kit 18-135mm; iphone x
           </CaptionSansSerif>
         </HeadingContainer>
+
         <PostsContainer>
           {data.allMdx.edges.map(({ node }) => {
             const featuredImgFluid =
               node.frontmatter.featuredImage.childImageSharp.fluid;
             return (
-              <div style={{ width: `24%`, padding: `2%` }} key={node.id}>
+              <PostCard key={node.id}>
                 <Link to={node.fields.slug} style={{ textDecoration: `none` }}>
                   <div></div>
-                  <Img
-                    fluid={featuredImgFluid}
-                    alt={`${node.frontmatter.title} amigurumi, taken with portrait mode on iphone`}
-                  />
+                  <Img fluid={featuredImgFluid} alt={node.frontmatter.alt} />
 
                   <p>
                     {node.frontmatter.title} • {node.frontmatter.date}
                   </p>
                 </Link>
-              </div>
+              </PostCard>
             );
           })}
         </PostsContainer>
-        <CaptionSansSerif style={{ marginBottom: `16px` }}>
+        <CaptionSansSerif style={{ textAlign: `center`, marginBottom: `20px` }}>
           {data.allMdx.totalCount} posts
         </CaptionSansSerif>
       </WhiteBGCenteredContainer>
