@@ -11,8 +11,10 @@ import {
   NavLink,
   RowContainer,
   viewingWidth,
+  viewingMaxWidth,
 } from '../styled/global';
 import Footer from './footer';
+import Icon from './icon';
 import useTitle from './useTitle';
 
 // --------------- Sidebar
@@ -59,13 +61,7 @@ const Sidebar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
   <SidebarContainer>
     <SidebarLeftContainer>
       <LogoContainer style={{ paddingTop: `20px` }}>
-        <span
-          style={{
-            background: `${Colors.lighterGray}`,
-            height: `50px`,
-            width: `50px`,
-            borderRadius: `50%`,
-          }}></span>
+        <Icon />
         <HomeLink style={{ fontFamily: `Arapey` }} to="/">
           {siteTitle}
         </HomeLink>
@@ -106,7 +102,7 @@ const CenterColumnContainer = styled(ColumnContainer)`
 const ResponsiveRowContainer = styled(RowContainer)`
   flex: 1 0 auto;
   width: ${viewingWidth};
-  max-width: 800px;
+  max-width: ${viewingMaxWidth};
   min-height: 400px;
   align-items: flex-start;
   justify-content: space-between;

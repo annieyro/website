@@ -6,6 +6,7 @@ import Colors from '../constants/Colors';
 
 // Styling constants
 export const viewingWidth = '80vw';
+export const viewingMaxWidth = '800px';
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -116,7 +117,8 @@ export const FooterContainer = styled.footer`
 
 export const PageCenterContainer = styled.div`
   margin: 0 auto;
-  width: ${viewingWidth}%;
+  width: ${viewingWidth};
+  max-width: ${viewingMaxWidth};
 `;
 
 // Shared between amigurumi & photo-journal

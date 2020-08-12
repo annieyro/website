@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import Colors from '../constants/Colors';
+import styled from 'styled-components';
 import { GlobalStyle } from '../styled/global';
+import Colors from '../constants/Colors';
+
 import {
   HomeLink,
   LogoContainer,
   NavLink,
   RowContainer,
   viewingWidth,
+  viewingMaxWidth,
 } from '../styled/global';
-import Footer from './footer';
 import useTitle from './useTitle';
-import styled from 'styled-components';
+import Footer from './footer';
+import Icon from './icon';
 
 // Navbar
 
@@ -32,7 +34,7 @@ export const NavbarContainer = styled.header`
 
 export const NavbarCenterContainer = styled(RowContainer)`
   width: ${viewingWidth};
-  max-width: 800px;
+  max-width: ${viewingMaxWidth};
   justify-content: space-between;
   align-items: center;
 `;
@@ -41,13 +43,7 @@ const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
   <NavbarContainer>
     <NavbarCenterContainer>
       <LogoContainer>
-        <span
-          style={{
-            background: `${Colors.lighterGray}`,
-            height: `50px`,
-            width: `50px`,
-            borderRadius: `50%`,
-          }}></span>
+        <Icon />
         <HomeLink style={{ fontFamily: `Arapey` }} to="/">
           {siteTitle}
         </HomeLink>
@@ -84,7 +80,7 @@ const NavbarLayout = ({ children }): JSX.Element => {
       <Navbar siteTitle={title} />
 
       <main>{children}</main>
-      <Footer />
+      <Footer style={{ marginTop: `20px` }} />
     </>
   );
 };
@@ -93,4 +89,4 @@ NavbarLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default NavbarLayout;
+export { Navbar as default, NavbarLayout };

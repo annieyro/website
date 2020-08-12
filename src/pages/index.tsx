@@ -1,39 +1,152 @@
 import React from 'react';
 
 import Image from '../components/image';
-import NavbarLayout from '../components/navbarlayout';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import Navbar from '../components/navbar';
 import SEO from '../components/seo';
-import { RowContainer } from '../styled/global';
-import { Intro, IntroContainer } from '../styled/index';
+import { RowContainer, GlobalStyle } from '../styled/global';
+import Colors from '../constants/Colors';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  Intro,
+  IntroContainer,
+  WindowContainer,
+  SectionContainer,
+  DownArrowContainer,
+  SectionTitle,
+  SectionText,
+} from '../styled/index';
+import useTitle from '../components/useTitle';
+import Footer from '../components/footer';
 
-const IndexPage = (): JSX.Element => (
-  <NavbarLayout>
-    <SEO title="home" />
-    <IntroContainer>
-      <RowContainer
+interface SectionDetails {
+  bg: string;
+  bgTitle: string;
+  title: string;
+  text: string;
+  left: string;
+  right: string;
+}
+
+const details: SectionDetails[] = [
+  {
+    bg: Colors.lightestYellow,
+    bgTitle: Colors.primaryYellow,
+    title: 'code',
+    text: 'lorem ipsum',
+    left: '0',
+    right: '',
+  },
+  {
+    bg: Colors.lightestTeal,
+    bgTitle: Colors.primaryTeal,
+    title: 'berkeley',
+    text: 'lorem ipsum',
+    left: '0',
+    right: '',
+  },
+  {
+    bg: Colors.lightestRed,
+    bgTitle: Colors.primaryRed,
+    title: 'personal',
+    text: 'lorem ipsum',
+    left: '',
+    right: '0',
+  },
+];
+
+const Section = ({ details }: { details: SectionDetails }): JSX.Element => (
+  <WindowContainer bg={details.bg}>
+    <SectionContainer left={details.left} right={details.right}>
+      <SectionTitle
+        // Swap left & right
         style={{
-          width: `90%`,
-          justifyContent: `space-between`,
-          alignItems: `center`,
-          flexWrap: `wrap`,
+          backgroundColor: details.bgTitle,
+          right: details.left,
+          left: details.right,
         }}>
-        <Intro>
-          <p>
-            hello! i'm <b>annie</b>.<br></br>i write code for a living •
-            <br></br>
-            currently @ twitter
-          </p>
-          <p>
-            but mostly i made this website for myself{' '}
-            <span style={{ fontFamily: `Arial` }}>(´ ▽ `)</span>
-          </p>
-        </Intro>
-        <div style={{ width: `30%`, maxWidth: `300px` }}>
-          <Image />
-        </div>
-      </RowContainer>
-    </IntroContainer>
-  </NavbarLayout>
+        {details.title}
+      </SectionTitle>
+      <SectionText
+        style={{
+          left: details.right ? `12vw` : '',
+          right: details.left ? `12vw` : '',
+        }}>
+        {details.text}
+      </SectionText>
+    </SectionContainer>
+
+    {/* Unclear whether arrows should be consistently in the middle - probably. */}
+    <div
+      style={{
+        position: `absolute`,
+        left: details.right ? `4vw` : '',
+        right: details.left ? `4vw` : '',
+        bottom: `24px`,
+      }}>
+      <FontAwesomeIcon
+        style={{
+          width: `2vw`,
+          fontSize: `26px`,
+          color: Colors.darkerGray,
+        }}
+        icon={faAngleDown}
+      />
+    </div>
+  </WindowContainer>
 );
+
+const IndexPage = (): JSX.Element => {
+  const title = useTitle();
+  return (
+    <>
+      <GlobalStyle />
+      <SEO title="home" />
+      {/* Top section */}
+      <WindowContainer>
+        <Navbar siteTitle={title} />
+        <IntroContainer>
+          <RowContainer
+            style={{
+              width: `90%`,
+              justifyContent: `space-between`,
+              alignItems: `center`,
+              flexWrap: `wrap`,
+            }}>
+            <Intro>
+              <p>
+                hello! i'm <b>annie</b>.<br></br>i write code for a living •
+                <br></br>
+                currently @ twitter
+              </p>
+              <p>
+                {`but mostly i made this website for myself `}
+                <span style={{ fontFamily: `Arial` }}>(´ ▽ `)</span>
+              </p>
+            </Intro>
+            {/* <div style={{ width: `30%`, maxWidth: `300px` }}>
+          <Image />
+        </div> */}
+          </RowContainer>
+        </IntroContainer>
+        <DownArrowContainer>
+          <FontAwesomeIcon
+            style={{
+              fontSize: `26px`,
+              color: Colors.darkerGray,
+            }}
+            bottom={`52px`}
+            icon={faAngleDown}
+          />
+        </DownArrowContainer>
+      </WindowContainer>
+      {/* Detail Sections */}
+      {details.map((detail: SectionDetails) => (
+        <Section details={detail}></Section>
+      ))}
+      <Footer style={{ marginTop: `5vh` }} />
+    </>
+  );
+};
 
 export default IndexPage;
