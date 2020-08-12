@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Image from '../components/image';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../components/navbar';
 import SEO from '../components/seo';
 import { RowContainer, GlobalStyle } from '../styled/global';
@@ -42,16 +42,16 @@ const details: SectionDetails[] = [
     bgTitle: Colors.primaryTeal,
     title: 'berkeley',
     text: 'lorem ipsum',
-    left: '0',
-    right: '',
+    left: '',
+    right: '0',
   },
   {
     bg: Colors.lightestRed,
     bgTitle: Colors.primaryRed,
     title: 'personal',
     text: 'lorem ipsum',
-    left: '',
-    right: '0',
+    left: '0',
+    right: '',
   },
 ];
 
@@ -76,23 +76,15 @@ const Section = ({ details }: { details: SectionDetails }): JSX.Element => (
       </SectionText>
     </SectionContainer>
 
-    {/* Unclear whether arrows should be consistently in the middle - probably. */}
-    <div
-      style={{
-        position: `absolute`,
-        left: details.right ? `4vw` : '',
-        right: details.left ? `4vw` : '',
-        bottom: `24px`,
-      }}>
+    <DownArrowContainer>
       <FontAwesomeIcon
         style={{
-          width: `2vw`,
           fontSize: `26px`,
           color: Colors.darkerGray,
         }}
-        icon={faAngleDown}
+        icon={faChevronDown}
       />
-    </div>
+    </DownArrowContainer>
   </WindowContainer>
 );
 
@@ -135,8 +127,7 @@ const IndexPage = (): JSX.Element => {
               fontSize: `26px`,
               color: Colors.darkerGray,
             }}
-            bottom={`52px`}
-            icon={faAngleDown}
+            icon={faChevronDown}
           />
         </DownArrowContainer>
       </WindowContainer>

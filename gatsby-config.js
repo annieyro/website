@@ -15,7 +15,7 @@ module.exports = {
         background_color: `#F8E7E9`,
         theme_color: `#F8E7E9`,
         display: `minimal-ui`,
-        icon: `src/images/icon-dark.jpg`, // This path is relative to the root of the site.
+        icon: `src/images/icon.jpg`, // This path is relative to the root of the site.
         theme_color_in_head: false,
       },
     },
@@ -60,6 +60,13 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/mdx`,
       },
     },
     {

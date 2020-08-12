@@ -14,6 +14,11 @@ export const Intro = styled.div`
   max-width: 500px;
   font-size: 20px;
   font-weight: 300;
+
+  @media (max-height: 500px) {
+    width: 90%;
+    margin-top: 8px;
+  }
 `;
 
 export const WindowContainer = styled.div`
@@ -38,7 +43,15 @@ export const DownArrowContainer = styled(RowContainer)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: ${(props) => props.bottom || `24px`};
+  bottom: 42px;
+
+  @media (max-width: 540px) {
+    bottom: 16px;
+  }
+
+  @media (max-width: 699px) {
+    bottom: 28px;
+  }
 `;
 
 export const SectionTitle = styled.div`
@@ -51,12 +64,22 @@ export const SectionTitle = styled.div`
   font-size: 26px;
   font-weight: 600;
   position: absolute;
+
+  @media (max-width: 450px) {
+    margin: 24px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 699px) {
+    margin: 32px;
+    font-size: 22px;
+  }
 `;
 
 export const SectionText = styled.div`
   position: absolute;
   margin: 0 auto;
-  top: 30vh;
+  top: 25vh;
   left: 14vw;
   font-size: 20px;
 `;

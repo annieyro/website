@@ -48,7 +48,7 @@ export const LogoContainer = styled(RowContainer)`
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 630px) {
+  @media (max-width: 700px) {
     width: 150px;
     min-width: 150px;
   }
@@ -62,7 +62,7 @@ export const HomeLink = styled(Link)`
   text-decoration: none;
   color: ${Colors.darkerGray};
 
-  @media (max-width: 630px) {
+  @media (max-width: 700px) {
     font-size: 1.5em;
   }
 `;
@@ -75,7 +75,7 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   color: ${Colors.darkerGray};
 
-  @media (max-width: 630px) {
+  @media (max-width: 800px) {
     font-size: 1em;
   }
 `;
@@ -141,37 +141,41 @@ export const HeadingContainer = styled(ColumnContainer)`
   width: 70%;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 12px;
+  margin-top: ${(props) => props.marginTop || `16px`};
   margin-bottom: 3vh;
 
   @media (max-width: 450px) {
-    height: 150px;
+    height: ${(props) => (props.lineNum > 1 ? `150px` : `130px`)};
   }
 
   @media (max-width: 699px) {
-    height: 170px;
+    height: ${(props) => (props.lineNum > 1 ? `165px` : `140px`)};
   }
 
   @media (min-width: 900px) {
-    height: 180px;
+    height: ${(props) => (props.lineNum > 1 ? `180px` : `150px`)};
   }
+`;
+
+export const BodyContainer = styled.div`
+  width: 70%;
+  margin-bottom: 2vh;
 `;
 
 // Text
 export const TitleSerif = styled.div`
   font-family: Lora;
-  font-weight: 600;
+  font-weight: ${(props) => props.fontWeight || `600`};
   font-size: 32px;
   letter-spacing: 0.03em;
   color: ${Colors.activeText};
-  margin-bottom: 4px;
-
-  @media (max-width: 630px) {
-    font-size: 1.75em;
-  }
 
   @media (max-width: 400px) {
-    font-size: 1.3em;
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 1.5em;
   }
 `;
 
@@ -182,13 +186,14 @@ export const CaptionSansSerif = styled.em`
   width: 82%;
   color: ${Colors.activeText};
 
-  @media (max-width: 630px) {
-    width: 95%;
-    font-size: 1em;
-  }
   @media (max-width: 400px) {
     width: 110%;
-    font-size: 0.9em;
+    font-size: 0.7em;
+  }
+
+  @media (max-width: 700px) {
+    width: 95%;
+    font-size: 1em;
   }
 `;
 

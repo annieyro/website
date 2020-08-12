@@ -25,7 +25,6 @@ export const NavbarContainer = styled.header`
   justify-content: center;
   align-items: center;
 
-  box-shadow: 0px 1px 2px 1px ${Colors.lightestRed};
   background: ${Colors.lightestRed};
   width: 100%;
   padding-top: 20px;
@@ -50,14 +49,15 @@ const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
       </LogoContainer>
       <RowContainer
         style={{
-          minWidth: `320px`,
+          minWidth: `228px`,
+          maxWidth: `320px`,
           width: `45%`,
           alignItems: `center`,
           justifyContent: `space-around`,
         }}>
         <NavLink to="/">home</NavLink>
-        <NavLink to="/amigurumi/">amigurumi</NavLink>
         <NavLink to="/photo-journal">photo journal</NavLink>
+        <NavLink to="/amigurumi/">♡</NavLink>
       </RowContainer>
     </NavbarCenterContainer>
   </NavbarContainer>

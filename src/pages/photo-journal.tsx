@@ -18,7 +18,7 @@ import {
 const PhotoJournalPage = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/pages/photo-journal/" } }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/mdx/photo-journal/" } }) {
         totalCount
         edges {
           node {
@@ -33,6 +33,7 @@ const PhotoJournalPage = (): JSX.Element => {
                   }
                 }
               }
+              alt
             }
             fields {
               slug
@@ -47,8 +48,8 @@ const PhotoJournalPage = (): JSX.Element => {
     <SidebarLayout>
       <SEO title="photo journal" />
       <WhiteBGCenteredContainer>
-        <HeadingContainer>
-          <TitleSerif>photo journal</TitleSerif>
+        <HeadingContainer lineNum={3}>
+          <TitleSerif style={{ marginBottom: `4px` }}>photo journal</TitleSerif>
           <hr style={{ width: `78%` }}></hr>
           <CaptionSansSerif>
             documenting some memories. <br></br> shot on canon eos80d | 50mm
@@ -75,7 +76,7 @@ const PhotoJournalPage = (): JSX.Element => {
           })}
         </PostsContainer>
         <CaptionSansSerif style={{ textAlign: `center`, marginBottom: `20px` }}>
-          {data.allMdx.totalCount} posts
+          {data.allMdx.totalCount} entries
         </CaptionSansSerif>
       </WhiteBGCenteredContainer>
     </SidebarLayout>

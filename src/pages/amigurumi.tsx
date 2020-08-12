@@ -18,7 +18,7 @@ import {
 const AmigurumiPage = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/pages/amigurumi/" } }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/mdx/amigurumi/" } }) {
         totalCount
         edges {
           node {
@@ -33,6 +33,7 @@ const AmigurumiPage = (): JSX.Element => {
                   }
                 }
               }
+              alt
             }
             fields {
               slug
@@ -47,8 +48,8 @@ const AmigurumiPage = (): JSX.Element => {
     <SidebarLayout>
       <SEO title="amigurumi" />
       <WhiteBGCenteredContainer>
-        <HeadingContainer>
-          <TitleSerif>amigurumi</TitleSerif>
+        <HeadingContainer lineNum={1}>
+          <TitleSerif style={{ marginBottom: `4px` }}>amigurumi</TitleSerif>
           <hr style={{ width: `75%` }}></hr>
           <CaptionSansSerif style={{ textAlign: `center` }}>
             crochet creatures
@@ -63,10 +64,7 @@ const AmigurumiPage = (): JSX.Element => {
               <PostCard key={node.id}>
                 <Link to={node.fields.slug} style={{ textDecoration: `none` }}>
                   <div></div>
-                  <Img
-                    fluid={featuredImgFluid}
-                    alt={`${node.frontmatter.title} amigurumi, taken with portrait mode on iphone`}
-                  />
+                  <Img fluid={featuredImgFluid} alt={node.frontmatter.alt} />
 
                   <p>
                     {node.frontmatter.title} • {node.frontmatter.date}

@@ -68,8 +68,8 @@ const Sidebar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
       </LogoContainer>
       <SidebarLinksContainer>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/amigurumi/">Amigurumi</NavLink>
         <NavLink to="/photo-journal">Photo Journal</NavLink>
+        <NavLink to="/amigurumi/">Amigurumi</NavLink>
       </SidebarLinksContainer>
     </SidebarLeftContainer>
     <Footer

@@ -2,7 +2,6 @@ import {
   faGithub,
   faInstagram,
   faLinkedinIn,
-  faMediumM,
   faTwitter,
   IconDefinition,
 } from '@fortawesome/free-brands-svg-icons';
@@ -60,11 +59,6 @@ const Social = ({
           icon={faInstagram}
           href="http://instagram.com/annieyro/"
         />
-        {/* <ClickableIcon
-          fontSize={fontSize}
-          icon={faMediumM}
-          href="https://medium.com/@annieyro"
-        /> */}
         <ClickableIcon
           fontSize={fontSize}
           icon={faLinkedinIn}
@@ -95,11 +89,6 @@ const Social = ({
           icon={faInstagram}
           href="http://instagram.com/annieyro/"
         />
-        {/* <ClickableIcon
-          fontSize={fontSize}
-          icon={faMediumM}
-          href="https://medium.com/@annieyro"
-        /> */}
         <ClickableIcon
           fontSize={fontSize}
           icon={faLinkedinIn}

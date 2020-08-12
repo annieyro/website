@@ -37,8 +37,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const amigurumiTemplate = path.resolve(`./src/templates/amigurumi-post.tsx`);
+  // const photoJournalTemplate = path.resolve(`./src/templates/photojournal-post.tsx`);
   result.data.allMdx.edges.forEach(({ node }) => {
-    console.log(node);
     createPage({
       path: node.fields.slug,
       component: amigurumiTemplate,
@@ -49,5 +49,4 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
-  console.log(JSON.stringify(result, null, 4));
 };

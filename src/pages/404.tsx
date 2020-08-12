@@ -13,8 +13,7 @@ const NotFoundPage = (): JSX.Element => (
       <p style={{ fontFamily: `Arial` }}>(・人・)</p>
       <p>{` you just hit a route that doesn't exist!`}</p>
 
-      <p>
-        <t></t>
+      <p style={{ fontSize: `20px`, paddingLeft: `8px` }}>
         <Link to={'/'}>
           try going <b>home</b>
         </Link>
