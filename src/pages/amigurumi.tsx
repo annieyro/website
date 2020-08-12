@@ -18,7 +18,9 @@ import {
 const AmigurumiPage = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/mdx/amigurumi/" } }) {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/md/amigurumi/" } }
+      ) {
         totalCount
         edges {
           node {
@@ -53,11 +55,12 @@ const AmigurumiPage = (): JSX.Element => {
           <hr style={{ width: `75%` }}></hr>
           <CaptionSansSerif style={{ textAlign: `center` }}>
             crochet creatures
+            <br></br> shot with iphone x (portrait mode)
           </CaptionSansSerif>
         </HeadingContainer>
 
         <PostsContainer>
-          {data.allMdx.edges.map(({ node }) => {
+          {data.allMarkdownRemark.edges.map(({ node }) => {
             const featuredImgFluid =
               node.frontmatter.featuredImage.childImageSharp.fluid;
             return (
@@ -75,7 +78,7 @@ const AmigurumiPage = (): JSX.Element => {
           })}
         </PostsContainer>
         <CaptionSansSerif style={{ textAlign: `center`, marginBottom: `20px` }}>
-          {data.allMdx.totalCount} posts
+          {data.allMarkdownRemark.totalCount} posts
         </CaptionSansSerif>
       </WhiteBGCenteredContainer>
     </SidebarLayout>

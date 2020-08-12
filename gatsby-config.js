@@ -21,6 +21,7 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     // Custom
@@ -66,18 +67,17 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src/mdx`,
+        path: `${__dirname}/src/posts`,
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        extensions: [`.md`, `.mdx`],
-        gatsbyRemarkPlugins: [
+        plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 440,
+              maxWidth: 800,
             },
           },
         ],

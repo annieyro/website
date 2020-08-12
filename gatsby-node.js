@@ -4,8 +4,9 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === `Mdx`) {
-    const slug = createFilePath({ node, getNode, basePath: `src/pages` });
+  if (node.internal.type === `MarkdownRemark`) {
+    console.log(node);
+    const slug = createFilePath({ node, getNode, basePath: `src/md` });
     createNodeField({
       node,
       name: `slug`,
@@ -18,7 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query {
-      allMdx {
+      allMarkdownRemark {
         edges {
           node {
             fields {
@@ -36,9 +37,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     throw result.errors;
   }
 
-  const amigurumiTemplate = path.resolve(`./src/templates/amigurumi-post.tsx`);
+  const amigurumiTemplate = path.resolve('./src/templates/amigurumi-post.tsx');
   // const photoJournalTemplate = path.resolve(`./src/templates/photojournal-post.tsx`);
-  result.data.allMdx.edges.forEach(({ node }) => {
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: amigurumiTemplate,

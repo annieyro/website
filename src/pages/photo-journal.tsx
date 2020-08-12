@@ -18,7 +18,9 @@ import {
 const PhotoJournalPage = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/mdx/photo-journal/" } }) {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/md/photo-journal/" } }
+      ) {
         totalCount
         edges {
           node {
@@ -58,7 +60,7 @@ const PhotoJournalPage = (): JSX.Element => {
         </HeadingContainer>
 
         <PostsContainer>
-          {data.allMdx.edges.map(({ node }) => {
+          {data.allMarkdownRemark.edges.map(({ node }) => {
             const featuredImgFluid =
               node.frontmatter.featuredImage.childImageSharp.fluid;
             return (
@@ -76,7 +78,7 @@ const PhotoJournalPage = (): JSX.Element => {
           })}
         </PostsContainer>
         <CaptionSansSerif style={{ textAlign: `center`, marginBottom: `20px` }}>
-          {data.allMdx.totalCount} entries
+          {data.allMarkdownRemark.totalCount} entries
         </CaptionSansSerif>
       </WhiteBGCenteredContainer>
     </SidebarLayout>
