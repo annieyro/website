@@ -34,7 +34,6 @@ const Arrow = ({
   color: string;
   hoverColor: string;
 }): JSX.Element => {
-  console.log(scrollToId);
   return (
     <DownArrowContainer>
       <ArrowIcon

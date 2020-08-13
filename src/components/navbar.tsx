@@ -81,7 +81,6 @@ const NavbarLayout = ({ children }: { children: JSX.Element }): JSX.Element => {
   const title = useTitle();
   // see sidebarlayout.tsx
   const path = window.location.pathname;
-  console.log(path);
 
   return (
     <>
