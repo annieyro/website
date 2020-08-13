@@ -25,13 +25,13 @@ const AmigurumiPost = ({ data }): JSX.Element => {
           </TitleSerif>
           <hr style={{ width: `75%` }}></hr>
         </HeadingContainer>
-
+        <div style={{ width: `60%`, maxWidth: `300px` }}>
+          <Img fluid={featuredImgFluid} alt={`${post.frontmatter.alt}`} />
+        </div>
         <BodyContainer>
           <section dangerouslySetInnerHTML={{ __html: post.html }}></section>
         </BodyContainer>
-        <div style={{ width: `60%` }}>
-          <Img fluid={featuredImgFluid} alt={`${post.frontmatter.alt}`} />
-        </div>
+
         {/* invisible margin lol */}
         <div style={{ height: `30vh`, display: `block`, color: `white` }}>
           hello!

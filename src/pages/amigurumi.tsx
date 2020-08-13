@@ -19,7 +19,7 @@ const AmigurumiPage = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/md/amigurumi/" } }
+        filter: { fileAbsolutePath: { regex: "/posts/amigurumi/" } }
       ) {
         totalCount
         edges {

@@ -19,7 +19,7 @@ const PhotoJournalPage = (): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/md/photo-journal/" } }
+        filter: { fileAbsolutePath: { regex: "/posts/photo-journal/" } }
       ) {
         totalCount
         edges {
@@ -55,7 +55,7 @@ const PhotoJournalPage = (): JSX.Element => {
           <hr style={{ width: `78%` }}></hr>
           <CaptionSansSerif>
             documenting some memories. <br></br> shot on canon eos80d | 50mm
-            f1.8 | kit 18-135mm; iphone x
+            f1.8 | kit 18-135mm; (sometimes) iphone x
           </CaptionSansSerif>
         </HeadingContainer>
 

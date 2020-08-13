@@ -8,5 +8,3 @@ alt: 'alt text'
 ## specifications
 
 b hook, craftsmart yarn, loopycathrine pattern
-
-<span>{props.pageContext.frontmatter.featuredImagePath}</span>
