@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { GlobalStyle } from '../styled/global';
-import Colors from '../constants/Colors';
 
+import Colors from '../constants/Colors';
+import { GlobalStyle } from '../styled/global';
 import {
   HomeLink,
   LogoContainer,
   NavLink,
   RowContainer,
-  viewingWidth,
   viewingMaxWidth,
+  viewingWidth,
 } from '../styled/global';
-import useTitle from './useTitle';
 import Footer from './footer';
 import Icon from './icon';
+import useTitle from './useTitle';
 
 // Navbar
 
@@ -38,7 +38,13 @@ export const NavbarCenterContainer = styled(RowContainer)`
   align-items: center;
 `;
 
-const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
+const Navbar = ({
+  siteTitle,
+  path,
+}: {
+  siteTitle: string;
+  path: string;
+}): JSX.Element => (
   <NavbarContainer>
     <NavbarCenterContainer>
       <LogoContainer>
@@ -55,9 +61,9 @@ const Navbar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
           alignItems: `center`,
           justifyContent: `space-around`,
         }}>
-        <NavLink to="/">home</NavLink>
-        <NavLink to="/photo-journal">photo journal</NavLink>
-        <NavLink to="/amigurumi/">♡</NavLink>
+        <NavLink to="/">{path === '/' ? <b>Home</b> : 'Home'}</NavLink>
+        <NavLink to="/photo-journal">Photo Journal</NavLink>
+        <NavLink to="/amigurumi">♡</NavLink>
       </RowContainer>
     </NavbarCenterContainer>
   </NavbarContainer>
@@ -71,13 +77,16 @@ Navbar.defaultProps = {
   siteTitle: ``,
 };
 
-const NavbarLayout = ({ children }): JSX.Element => {
+const NavbarLayout = ({ children }: { children: JSX.Element }): JSX.Element => {
   const title = useTitle();
+  // see sidebarlayout.tsx
+  const path = window.location.pathname;
+  console.log(path);
 
   return (
     <>
       <GlobalStyle />
-      <Navbar siteTitle={title} />
+      <Navbar path={path} siteTitle={title} />
 
       <main>{children}</main>
       <Footer style={{ marginTop: `20px` }} />

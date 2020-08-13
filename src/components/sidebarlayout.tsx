@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-
 import Colors from '../constants/Colors';
 import {
   ColumnContainer,
@@ -10,8 +9,8 @@ import {
   LogoContainer,
   NavLink,
   RowContainer,
-  viewingWidth,
   viewingMaxWidth,
+  viewingWidth,
 } from '../styled/global';
 import Footer from './footer';
 import Icon from './icon';
@@ -57,30 +56,44 @@ const SidebarLinksContainer = styled(ColumnContainer)`
 `;
 
 // TODO accept props for which link to bold / change color
-const Sidebar = ({ siteTitle }: { siteTitle: string }): JSX.Element => (
-  <SidebarContainer>
-    <SidebarLeftContainer>
-      <LogoContainer style={{ paddingTop: `20px` }}>
-        <Icon />
-        <HomeLink style={{ fontFamily: `Arapey` }} to="/">
-          {siteTitle}
-        </HomeLink>
-      </LogoContainer>
-      <SidebarLinksContainer>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/photo-journal">Photo Journal</NavLink>
-        <NavLink to="/amigurumi/">Amigurumi</NavLink>
-      </SidebarLinksContainer>
-    </SidebarLeftContainer>
-    <Footer
-      fontSize={'22px'}
-      style={{
-        marginBottom: `2vh`,
-      }}
-      sidebar={true}
-    />
-  </SidebarContainer>
-);
+const Sidebar = ({
+  siteTitle,
+  path,
+}: {
+  siteTitle: string;
+  path: string;
+}): JSX.Element => {
+  // janky implementation while only two options in sidebar. will have to refactor with enums later
+  const bold = path === '/photo-journal' ? 0 : 1;
+  return (
+    <SidebarContainer>
+      <SidebarLeftContainer>
+        <LogoContainer style={{ paddingTop: `20px` }}>
+          <Icon />
+          <HomeLink style={{ fontFamily: `Arapey` }} to="/">
+            {siteTitle}
+          </HomeLink>
+        </LogoContainer>
+        <SidebarLinksContainer>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/photo-journal">
+            {bold === 0 ? <b>Photo Journal</b> : 'Photo Journal'}
+          </NavLink>
+          <NavLink to="/amigurumi">
+            {bold === 1 ? <b>Amigurumi</b> : 'Amigurumi'}
+          </NavLink>
+        </SidebarLinksContainer>
+      </SidebarLeftContainer>
+      <Footer
+        fontSize={'22px'}
+        style={{
+          marginBottom: `2vh`,
+        }}
+        sidebar={true}
+      />
+    </SidebarContainer>
+  );
+};
 
 Sidebar.propTypes = {
   siteTitle: PropTypes.string,
@@ -121,15 +134,20 @@ const MainContentColumnContainer = styled.main`
   }
 `;
 
-const SidebarLayout = ({ children }): JSX.Element => {
+const SidebarLayout = ({
+  children,
+}: {
+  children: JSX.Element;
+}): JSX.Element => {
   const title = useTitle();
+  const path = window.location.pathname; // this is p jank, but otherwise need to use gatsby-plugin-layout
 
   return (
     <>
       <GlobalStyle />
       <CenterColumnContainer>
         <ResponsiveRowContainer>
-          <Sidebar siteTitle={title}></Sidebar>
+          <Sidebar path={path} siteTitle={title}></Sidebar>
           <MainContentColumnContainer>{children}</MainContentColumnContainer>
         </ResponsiveRowContainer>
       </CenterColumnContainer>

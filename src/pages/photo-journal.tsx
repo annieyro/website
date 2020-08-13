@@ -1,15 +1,16 @@
-import { Link } from 'gatsby';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
-
 import SEO from '../components/seo';
 import SidebarLayout from '../components/sidebarlayout';
-import { CaptionSansSerif, TitleSerif } from '../styled/global';
 import {
+  CaptionSansSerif,
   HeadingContainer,
+  ContentContainer,
   PostCard,
   PostsContainer,
+  TitleSerif,
+  LayoutStyle,
   WhiteBGCenteredContainer,
 } from '../styled/global';
 
@@ -20,6 +21,7 @@ const PhotoJournalPage = (): JSX.Element => {
     query {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/posts/photo-journal/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
       ) {
         totalCount
         edges {
@@ -46,41 +48,58 @@ const PhotoJournalPage = (): JSX.Element => {
     }
   `);
 
+  const numEntries = data.allMarkdownRemark.totalCount;
+
   return (
     <SidebarLayout>
-      <SEO title="photo journal" />
-      <WhiteBGCenteredContainer>
-        <HeadingContainer lineNum={3}>
-          <TitleSerif style={{ marginBottom: `4px` }}>photo journal</TitleSerif>
-          <hr style={{ width: `78%` }}></hr>
-          <CaptionSansSerif>
-            documenting some memories. <br></br> shot on canon eos80d | 50mm
-            f1.8 | kit 18-135mm; (sometimes) iphone x
+      <>
+        <LayoutStyle />
+        <SEO title="photo journal" />
+        <WhiteBGCenteredContainer>
+          <ContentContainer>
+            <HeadingContainer lineNum={3}>
+              <TitleSerif style={{ marginBottom: `4px` }}>
+                photo journal
+              </TitleSerif>
+              <hr style={{ width: `78%` }}></hr>
+              <CaptionSansSerif>
+                documenting some memories. <br></br> shot on canon eos80d • 50mm
+                f1.8 • kit 18-135mm | (sometimes) iphone x
+              </CaptionSansSerif>
+            </HeadingContainer>
+
+            <PostsContainer>
+              {data.allMarkdownRemark.edges.map(({ node }) => {
+                const featuredImgFluid =
+                  node.frontmatter.featuredImage.childImageSharp.fluid;
+                return (
+                  <PostCard key={node.id}>
+                    <Link
+                      to={node.fields.slug}
+                      style={{ textDecoration: `none` }}>
+                      <div></div>
+                      <Img
+                        fluid={featuredImgFluid}
+                        alt={node.frontmatter.alt}
+                      />
+
+                      <p>
+                        {node.frontmatter.title} • {node.frontmatter.date}
+                      </p>
+                    </Link>
+                  </PostCard>
+                );
+              })}
+            </PostsContainer>
+          </ContentContainer>
+          <CaptionSansSerif
+            style={{
+              paddingBottom: `24px`,
+            }}>
+            {numEntries} {numEntries > 1 ? 'entries' : 'entry'}
           </CaptionSansSerif>
-        </HeadingContainer>
-
-        <PostsContainer>
-          {data.allMarkdownRemark.edges.map(({ node }) => {
-            const featuredImgFluid =
-              node.frontmatter.featuredImage.childImageSharp.fluid;
-            return (
-              <PostCard key={node.id}>
-                <Link to={node.fields.slug} style={{ textDecoration: `none` }}>
-                  <div></div>
-                  <Img fluid={featuredImgFluid} alt={node.frontmatter.alt} />
-
-                  <p>
-                    {node.frontmatter.title} • {node.frontmatter.date}
-                  </p>
-                </Link>
-              </PostCard>
-            );
-          })}
-        </PostsContainer>
-        <CaptionSansSerif style={{ textAlign: `center`, marginBottom: `20px` }}>
-          {data.allMarkdownRemark.totalCount} entries
-        </CaptionSansSerif>
-      </WhiteBGCenteredContainer>
+        </WhiteBGCenteredContainer>
+      </>
     </SidebarLayout>
   );
 };

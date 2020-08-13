@@ -1,8 +1,8 @@
 ---
 title: 'bunny'
-date: '2020-07-28'
+date: '2020-06-08'
 featuredImage: ../../images/amigurumi/bunny.jpg
-alt: 'alt text'
+alt: 'white bunny with a yellow flower'
 ---
 
 ## specifications
@@ -11,3 +11,7 @@ as written.
 
 yarn: caron simply soft (cream), craftsmart (white)
 pattern (free): storylandamis
+
+## dedication
+
+for beini ♡

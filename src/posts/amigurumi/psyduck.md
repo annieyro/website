@@ -1,10 +1,14 @@
 ---
 title: 'psyduck'
-date: '2020-07-28'
+date: '2020-07-10'
 featuredImage: ../../images/amigurumi/psyduck.jpg
-alt: 'alt text'
+alt: 'psyduck (kanto pokemon character), '
 ---
 
 ## specifications
 
-b hook, craftsmart yarn, loopycathrine pattern
+b hook, craftsmart 'yellow' yarn, loops&thread 'heather' yarn, loopycathrine pattern
+
+## dedication
+
+for julian ♡

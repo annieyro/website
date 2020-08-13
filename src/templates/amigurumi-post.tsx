@@ -1,23 +1,22 @@
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-
 import React from 'react';
+import SidebarLayout from '../components/sidebarlayout';
 import {
-  WhiteBGCenteredContainer,
   BodyContainer,
   HeadingContainer,
   TitleSerif,
+  WhiteBGCenteredContainer,
 } from '../styled/global';
-
-import SidebarLayout from '../components/sidebarlayout';
+import { PostStyle } from '../styled/global';
 
 const AmigurumiPost = ({ data }): JSX.Element => {
-  console.log(data.markdownRemark.frontmatter);
   const post = data.markdownRemark;
   const featuredImgFluid = post.frontmatter.featuredImage.childImageSharp.fluid;
 
   return (
     <SidebarLayout>
+      <PostStyle />
       <WhiteBGCenteredContainer>
         <HeadingContainer marginTop="32px" lineNum={0}>
           <TitleSerif fontWeight={'500'} style={{ marginBottom: `12px` }}>

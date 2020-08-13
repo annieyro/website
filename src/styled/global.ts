@@ -1,7 +1,5 @@
 import { Link } from 'gatsby';
-import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
-
+import styled, { createGlobalStyle } from 'styled-components';
 import Colors from '../constants/Colors';
 
 // Styling constants
@@ -27,6 +25,27 @@ export const GlobalStyle = createGlobalStyle`
   }
   main {
     display: inline;
+  }
+`;
+
+// TODO: figure out how to get another font family to work lol, work sans?
+export const LayoutStyle = createGlobalStyle`
+body {
+  font-family: Athiti;
+  font-size: 14px;
+  font-weight: 300;
+}
+`;
+
+export const PostStyle = createGlobalStyle`
+  body {
+    font-family: Karla;
+  }
+  b, h1, h2, h3, h4 {
+      font-weight: 600;
+  }
+  h1, h2, h3, h4 {
+      font-family: Lora;
   }
 `;
 
@@ -137,6 +156,12 @@ export const WhiteBGCenteredContainer = styled(ColumnContainer)`
   overflow-y: auto;
 `;
 
+export const ContentContainer = styled(ColumnContainer)`
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
 export const HeadingContainer = styled(ColumnContainer)`
   width: 70%;
   justify-content: space-evenly;
@@ -182,6 +207,7 @@ export const TitleSerif = styled.div`
 export const CaptionSansSerif = styled.em`
   font-weight: 400;
   font-size: 16px;
+  text-align: center;
   line-height: 1.2em;
   width: 82%;
   color: ${Colors.activeText};

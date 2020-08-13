@@ -15,7 +15,7 @@ module.exports = {
         background_color: `#F8E7E9`,
         theme_color: `#F8E7E9`,
         display: `minimal-ui`,
-        icon: `src/images/icon.jpg`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
         theme_color_in_head: false,
       },
     },
@@ -40,6 +40,10 @@ module.exports = {
           {
             family: `Arapey`,
             variants: [`400`, `400i`],
+          },
+          {
+            family: `Work Sans`,
+            variants: [`200`, `200i`, `300`, `300i`],
           },
           { family: `Athiti`, variants: [`300`, `400`, `500`, `600`, `700`] },
         ],
@@ -83,5 +87,6 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-smoothscroll`,
   ],
 };

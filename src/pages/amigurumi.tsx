@@ -1,15 +1,16 @@
-import { Link } from 'gatsby';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
-
 import SEO from '../components/seo';
 import SidebarLayout from '../components/sidebarlayout';
-import { CaptionSansSerif, TitleSerif } from '../styled/global';
 import {
+  CaptionSansSerif,
   HeadingContainer,
   PostCard,
   PostsContainer,
+  ContentContainer,
+  TitleSerif,
+  LayoutStyle,
   WhiteBGCenteredContainer,
 } from '../styled/global';
 
@@ -20,6 +21,7 @@ const AmigurumiPage = (): JSX.Element => {
     query {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/posts/amigurumi/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
       ) {
         totalCount
         edges {
@@ -46,41 +48,54 @@ const AmigurumiPage = (): JSX.Element => {
     }
   `);
 
+  const numEntries = data.allMarkdownRemark.totalCount;
+
   return (
     <SidebarLayout>
-      <SEO title="amigurumi" />
-      <WhiteBGCenteredContainer>
-        <HeadingContainer lineNum={1}>
-          <TitleSerif style={{ marginBottom: `4px` }}>amigurumi</TitleSerif>
-          <hr style={{ width: `75%` }}></hr>
-          <CaptionSansSerif style={{ textAlign: `center` }}>
-            crochet creatures
-            <br></br> shot with iphone x (portrait mode)
+      <>
+        <LayoutStyle />
+        <SEO title="amigurumi" />
+        <WhiteBGCenteredContainer>
+          <ContentContainer>
+            <HeadingContainer lineNum={3}>
+              <TitleSerif style={{ marginBottom: `4px` }}>amigurumi</TitleSerif>
+              <hr style={{ width: `75%` }}></hr>
+              <CaptionSansSerif>
+                crochet creatures
+                <br></br> shot with iphone x (portrait mode)
+                <br></br>dedicated to people i love (":
+              </CaptionSansSerif>
+            </HeadingContainer>
+
+            <PostsContainer>
+              {data.allMarkdownRemark.edges.map(({ node }) => {
+                const featuredImgFluid =
+                  node.frontmatter.featuredImage.childImageSharp.fluid;
+                return (
+                  <PostCard key={node.id}>
+                    <Link
+                      to={node.fields.slug}
+                      style={{ textDecoration: `none` }}>
+                      <div></div>
+                      <Img
+                        fluid={featuredImgFluid}
+                        alt={node.frontmatter.alt}
+                      />
+
+                      <p>
+                        {node.frontmatter.title} • {node.frontmatter.date}
+                      </p>
+                    </Link>
+                  </PostCard>
+                );
+              })}
+            </PostsContainer>
+          </ContentContainer>
+          <CaptionSansSerif style={{ marginBottom: `24px` }}>
+            {numEntries} {numEntries > 1 ? 'posts' : 'post'}
           </CaptionSansSerif>
-        </HeadingContainer>
-
-        <PostsContainer>
-          {data.allMarkdownRemark.edges.map(({ node }) => {
-            const featuredImgFluid =
-              node.frontmatter.featuredImage.childImageSharp.fluid;
-            return (
-              <PostCard key={node.id}>
-                <Link to={node.fields.slug} style={{ textDecoration: `none` }}>
-                  <div></div>
-                  <Img fluid={featuredImgFluid} alt={node.frontmatter.alt} />
-
-                  <p>
-                    {node.frontmatter.title} • {node.frontmatter.date}
-                  </p>
-                </Link>
-              </PostCard>
-            );
-          })}
-        </PostsContainer>
-        <CaptionSansSerif style={{ textAlign: `center`, marginBottom: `20px` }}>
-          {data.allMarkdownRemark.totalCount} posts
-        </CaptionSansSerif>
-      </WhiteBGCenteredContainer>
+        </WhiteBGCenteredContainer>
+      </>
     </SidebarLayout>
   );
 };

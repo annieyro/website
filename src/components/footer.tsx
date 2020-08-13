@@ -17,8 +17,14 @@ import {
   SocialContainer,
 } from '../styled/global';
 
-const Copyright: React.FC = (): JSX.Element => (
-  <CopyrightContainer>© {new Date().getFullYear()} annieyro</CopyrightContainer>
+export const Copyright = ({
+  style,
+}: {
+  style?: React.CSSProperties;
+}): JSX.Element => (
+  <CopyrightContainer style={style} id="copyright">
+    © {new Date().getFullYear()} annieyro
+  </CopyrightContainer>
 );
 
 const ClickableIcon = ({
@@ -39,16 +45,18 @@ const ClickableIcon = ({
 );
 
 // TODO make an object for icons, then map over to produce this list. so messy but whatever lmao
-const Social = ({
+export const Social = ({
   sidebar,
   fontSize,
+  style,
 }: {
   sidebar?: boolean;
   fontSize?: string;
+  style?: React.CSSProperties;
 }): JSX.Element => {
   if (sidebar)
     return (
-      <SidebarSocialContainer>
+      <SidebarSocialContainer id="social" style={style}>
         <ClickableIcon
           fontSize={fontSize}
           icon={faTwitter}
@@ -78,7 +86,7 @@ const Social = ({
     );
   else
     return (
-      <SocialContainer>
+      <SocialContainer id="social" style={style}>
         <ClickableIcon
           fontSize={fontSize}
           icon={faTwitter}
@@ -117,7 +125,7 @@ const Footer = ({
   sidebar?: boolean;
   fontSize?: string;
 }): JSX.Element => (
-  <FooterContainer style={{ ...style }}>
+  <FooterContainer id="footer" style={style}>
     <Social sidebar={sidebar || false} fontSize={fontSize || ''} />
     <Copyright />
   </FooterContainer>

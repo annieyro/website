@@ -1,11 +1,11 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-
-import { PageCenterContainer, RowContainer, viewingMaxWidth } from './global';
 import Colors from '../constants/Colors';
+import { PageCenterContainer, RowContainer, viewingMaxWidth } from './global';
 
 export const IntroContainer = styled(PageCenterContainer)`
   max-width: ${viewingMaxWidth};
-  min-height: 80vh;
+  height: 60vh;
 `;
 
 export const Intro = styled.div`
@@ -43,20 +43,30 @@ export const DownArrowContainer = styled(RowContainer)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 42px;
+  bottom: 32px;
 
-  @media (max-width: 540px) {
-    bottom: 16px;
+  @media (max-height: 540px), (max-width: 540px) {
+    bottom: 12px;
   }
 
-  @media (max-width: 699px) {
-    bottom: 28px;
+  @media (max-height: 640px), (max-width: 699px) {
+    bottom: 24px;
+  }
+`;
+
+export const ArrowIcon = styled(FontAwesomeIcon)`
+  font-size: 20px;
+  color: ${(props) => props.color || Colors.darkerRed};
+
+  &:hover {
+    cursor: pointer;
+    color: ${(props) => props.hoverColor || Colors.primaryRed};
   }
 `;
 
 export const SectionTitle = styled.div`
   color: ${Colors.lightestText};
-  min-width: 140px;
+  min-width: 160px;
   width: 18vw;
   margin: 44px;
   padding: 4px 0;
@@ -68,18 +78,39 @@ export const SectionTitle = styled.div`
   @media (max-width: 450px) {
     margin: 24px;
     font-size: 20px;
+    min-width: 140px;
   }
 
   @media (max-width: 699px) {
     margin: 32px;
     font-size: 22px;
+    min-width: 148px;
   }
 `;
 
 export const SectionText = styled.div`
   position: absolute;
   margin: 0 auto;
-  top: 25vh;
+  top: 120px;
   left: 14vw;
   font-size: 20px;
+
+  @media (max-width: 450px) {
+    top: 64px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 699px) {
+    top: 90px;
+    font-size: 18px;
+  }
+`;
+
+export const ContactButton = styled.div`
+  color: ${Colors.darkerRed};
+
+  &:hover {
+    cursor: pointer;
+    color: ${(props) => props.hoverColor || Colors.primaryRed};
+  }
 `;
