@@ -14,7 +14,7 @@ import {
 } from '../styled/global';
 import Footer from './footer';
 import Icon from './icon';
-import useTitle from './useTitle';
+import useTitle from '../hooks/useTitle';
 
 // Navbar
 
@@ -43,7 +43,7 @@ const Navbar = ({
   path,
 }: {
   siteTitle: string;
-  path: string;
+  path?: string;
 }): JSX.Element => (
   <NavbarContainer>
     <NavbarCenterContainer>
@@ -61,7 +61,7 @@ const Navbar = ({
           alignItems: `center`,
           justifyContent: `space-around`,
         }}>
-        <NavLink to="/">{path === '/' ? <b>Home</b> : 'Home'}</NavLink>
+        <NavLink to="/">{path && path === '/' ? <b>Home</b> : 'Home'}</NavLink>
         <NavLink to="/photo-journal">Photo Journal</NavLink>
         <NavLink to="/amigurumi">♡</NavLink>
       </RowContainer>
@@ -80,12 +80,11 @@ Navbar.defaultProps = {
 const NavbarLayout = ({ children }: { children: JSX.Element }): JSX.Element => {
   const title = useTitle();
   // see sidebarlayout.tsx
-  const path = window.location.pathname;
 
   return (
     <>
       <GlobalStyle />
-      <Navbar path={path} siteTitle={title} />
+      <Navbar siteTitle={title} />
 
       <main>{children}</main>
       <Footer style={{ marginTop: `20px` }} />

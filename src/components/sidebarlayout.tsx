@@ -14,7 +14,7 @@ import {
 } from '../styled/global';
 import Footer from './footer';
 import Icon from './icon';
-import useTitle from './useTitle';
+import useTitle from '../hooks/useTitle';
 
 // --------------- Sidebar
 
@@ -136,11 +136,13 @@ const MainContentColumnContainer = styled.main`
 
 const SidebarLayout = ({
   children,
+  location,
 }: {
   children: JSX.Element;
+  location: Location;
 }): JSX.Element => {
   const title = useTitle();
-  const path = window.location.pathname; // this is p jank, but otherwise need to use gatsby-plugin-layout
+  const path = location.pathname; // this is p jank, but otherwise need to use gatsby-plugin-layout
 
   return (
     <>

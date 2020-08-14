@@ -16,7 +16,7 @@ import {
 
 // TODO install gatsby-plugin-typegen to help w/ graphQL types until then ignore :sweat-smile:
 
-const AmigurumiPage = (): JSX.Element => {
+const AmigurumiPage = ({ location }: { location: Location }): JSX.Element => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -51,7 +51,7 @@ const AmigurumiPage = (): JSX.Element => {
   const numEntries = data.allMarkdownRemark.totalCount;
 
   return (
-    <SidebarLayout>
+    <SidebarLayout location={location}>
       <>
         <LayoutStyle />
         <SEO title="amigurumi" />

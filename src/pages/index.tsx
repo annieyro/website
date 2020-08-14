@@ -8,7 +8,7 @@ import React from 'react';
 import { Social, Copyright } from '../components/footer';
 import Navbar from '../components/navbar';
 import SEO from '../components/seo';
-import useTitle from '../components/useTitle';
+import useTitle from '../hooks/useTitle';
 import Colors from '../constants/Colors';
 import { GlobalStyle, ColumnContainer } from '../styled/global';
 import {
@@ -133,7 +133,7 @@ const Section = ({ details }: { details: SectionDetails }): JSX.Element => {
   );
 };
 
-const IndexPage = (): JSX.Element => {
+const IndexPage = ({ location }: { location: Location }): JSX.Element => {
   const title = useTitle();
   const firstSectionId = '#'.concat(allDetails[0].title);
 
@@ -143,7 +143,8 @@ const IndexPage = (): JSX.Element => {
       <SEO title="home" />
       {/* Top section */}
       <WindowContainer id="intro">
-        <Navbar path={window.location.pathname} siteTitle={title} />
+        {/* On first render, location.pathname is empty. jank workaround */}
+        <Navbar path={location.pathname || '/'} siteTitle={title} />
         <IntroContainer>
           <ColumnContainer
             style={{
