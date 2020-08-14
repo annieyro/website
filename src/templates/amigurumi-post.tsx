@@ -9,6 +9,7 @@ import {
   WhiteBGCenteredContainer,
 } from '../styled/global';
 import { PostStyle } from '../styled/global';
+import SEO from '../components/seo';
 
 const AmigurumiPost = ({
   data,
@@ -23,6 +24,7 @@ const AmigurumiPost = ({
     <SidebarLayout location={location}>
       <>
         <PostStyle />
+        <SEO title={post.frontmatter.title} />
         <WhiteBGCenteredContainer>
           <HeadingContainer marginTop="32px" lineNum={0}>
             <TitleSerif fontWeight={'500'} style={{ marginBottom: `12px` }}>
@@ -36,11 +38,6 @@ const AmigurumiPost = ({
           <BodyContainer>
             <section dangerouslySetInnerHTML={{ __html: post.html }}></section>
           </BodyContainer>
-
-          {/* invisible margin lol */}
-          <div style={{ height: `30vh`, display: `block`, color: `white` }}>
-            hello!
-          </div>
         </WhiteBGCenteredContainer>
       </>
     </SidebarLayout>

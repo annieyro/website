@@ -64,7 +64,8 @@ const Sidebar = ({
   path: string;
 }): JSX.Element => {
   // janky implementation while only two options in sidebar. will have to refactor with enums later
-  const bold = path === '/photo-journal' ? 0 : 1;
+  const bold = path.includes('/photo-journal') ? 0 : 1;
+
   return (
     <SidebarContainer>
       <SidebarLeftContainer>

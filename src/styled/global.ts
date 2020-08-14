@@ -32,20 +32,26 @@ export const GlobalStyle = createGlobalStyle`
 export const LayoutStyle = createGlobalStyle`
 body {
   font-family: Athiti;
-  font-size: 14px;
   font-weight: 300;
 }
 `;
 
 export const PostStyle = createGlobalStyle`
-  body {
+  p {
     font-family: Karla;
   }
   b, h1, h2, h3, h4 {
       font-weight: 600;
   }
   h1, h2, h3, h4 {
-      font-family: Lora;
+      font-family: Karla;
+      letter-spacing: 0.02em;
+  }
+  h2 {
+    font-size: 1.35em;
+  }
+  h3 {
+    font-size: 1em;
   }
 `;
 

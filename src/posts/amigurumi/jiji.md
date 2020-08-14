@@ -7,9 +7,9 @@ alt: 'jiji the black cat from kikis delivery service, with a red bow around his 
 
 ## specifications
 
-as written.
-yarn: red heart super saver (black, red). shitty wire from our garage lol.
-pattern (free): ravelry (linked by allaboutami)
+hook: as written.  
+yarn: red heart super saver (black, red).  
+pattern (free): ravelry (linked by allaboutami)  
 guide: allaboutami
 
 ## dedication
